@@ -150,6 +150,8 @@ import org.apache.hive.common.util.AnnotationUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import org.apache.hadoop.hive.ql.udf.HelloUDF;
+
 /**
  * FunctionRegistry.
  */
@@ -189,6 +191,7 @@ public final class FunctionRegistry {
   private static final Registry system = new Registry(true);
 
   static {
+    system.registerUDF("HelloUDF", HelloUDF.class, false);
     system.registerGenericUDF("concat", GenericUDFConcat.class);
     system.registerUDF("substr", UDFSubstr.class, false);
     system.registerUDF("substring", UDFSubstr.class, false);
